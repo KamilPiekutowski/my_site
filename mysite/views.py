@@ -3,10 +3,10 @@ from django.shortcuts import render
 import datetime
 
 def hello(request):
-    return HttpResponse("<h1>Hello World</h1>")
+    return render(request, 'hello.html')
 
 def index(request):
-    return HttpResponse("<h1>This is a homepgae</h1>")
+    return render(request, 'index.html')
 
 def current_datetime(request):
     now = datetime.datetime.now()
@@ -20,6 +20,9 @@ def hours_ahead(request, offset):
 
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
 
-    html = "<html><body>In %s hour(s), it will be  %s</body></html>" % (offset, dt)
+    params = {
+            'offset' : offset,
+            'dt' : dt,
+            }
 
-    return HttpResponse(html)
+    return render(request, 'hours_ahead.html', params)
