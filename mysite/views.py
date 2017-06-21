@@ -1,4 +1,5 @@
 #mysite/mysite/views.py
+from django.http import HttpResponse
 from django.shortcuts import render
 import datetime
 
@@ -26,3 +27,17 @@ def hours_ahead(request, offset):
             }
 
     return render(request, 'hours_ahead.html', params)
+
+
+def display_meta(request):
+    values = request.META.items()
+    html = []
+    for k in sorted(values):
+        html.append('<tr><td>%s</td><td>%s</td></tr>' % (k[0], k[1]))
+
+    return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+# \books\views.py
+
+def search_form(request):
+    return render(request,'books/search_from.html')
