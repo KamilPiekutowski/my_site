@@ -64,3 +64,7 @@ def contact(request):
         form = ContactForm()
         return render(request,'contact_form.html', {'form' : form})
 
+# \my_site\my_site\views.py
+
+def contact_thanks(request):
+    return HttpResponse('Thank you for your message!')
