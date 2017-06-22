@@ -59,10 +59,10 @@ def contact(request):
                     ['siteowner@example.com'],
                     connection=con
                     )
-            return HttpResponseRedirect('/contact/thanks')
+            return HttpResponseRedirect('/contact/thanks/')
     else:
         form = ContactForm()
-        return render(request,'contact_form.html', {'form' : form})
+    return render(request,'contact_form.html', {'form' : form})
 
 # \my_site\my_site\views.py
 
